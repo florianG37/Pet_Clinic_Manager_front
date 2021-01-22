@@ -34,4 +34,5 @@ Visualisation des statistiques :
 * Age moyen des animaux (Nombre)
 * Heures supplémentaires des vétérinaires (Pourcentage)
 
-
+Gestion des utilisateurs :
+* Gestion des utilisateurs par l’administrateur
