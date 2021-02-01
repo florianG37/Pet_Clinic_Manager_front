@@ -11,10 +11,10 @@ import { SmartTableData } from '../../../@core/data/smart-table';
 export class SmartTableComponent {
 
   settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
+    actions: {
+      columnTitle: "Modifier / Supprimer",
+      position: "right",
+      add: false
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -26,31 +26,48 @@ export class SmartTableComponent {
       confirmDelete: true,
     },
     columns: {
-      id: {
-        title: 'ID',
+      idVisit: {
+        title: 'Identifiant de la visite',
+        type: 'number',
+      },
+      idPet: {
+        title: 'Identifiant de l\'animal',
+        type: 'number',
+      },
+      name: {
+        title: 'Nom de l\'animal',
+        type: 'string',
+      },
+      petWeight: {
+        title: 'Poids de l\'animal',
+        type: 'number',
+      },
+      idVet: {
+        title: 'Identifiant du vétérinaire',
         type: 'number',
       },
       firstName: {
-        title: 'First Name',
+        title: 'Prénom du vétérinaire',
         type: 'string',
       },
       lastName: {
-        title: 'Last Name',
+        title: 'Nom du vétérinaire',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      description: {
+        title: 'Description',
         type: 'string',
       },
-      email: {
-        title: 'E-mail',
-        type: 'string',
+      dateEntry: {
+        title: 'Date d\'entrée',
+        type: 'date',
       },
-      age: {
-        title: 'Age',
-        type: 'number',
+      dateLeaving: {
+        title: 'Date de sortie',
+        type: 'date',
       },
     },
+    noDataMessage: ""
   };
 
   source: LocalDataSource = new LocalDataSource();
