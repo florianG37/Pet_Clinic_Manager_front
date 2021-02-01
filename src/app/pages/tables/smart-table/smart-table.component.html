@@ -1,10 +1,17 @@
 <nb-card>
-  <nb-card-header>
     <h1>Visites</h1>
-  </nb-card-header>
+</nb-card>
 
-  <nb-card-body>
+<nb-card>
+    <div id="add">
+        <button nbButton shape="round" status="success"> + </button>
+    </div>
+
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
-  </nb-card-body>
+
+
+    <div id="add">
+        <button nbButton shape="round" status="success">+ </button>
+    </div>
 </nb-card>
