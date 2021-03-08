@@ -204,6 +204,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/tables/smart-table'
   },
   {
+    title: 'Connexion',
+    icon: 'grid-outline',
+    link: '/pages/tables/tree-grid'
+  },
+  {
     title: 'Miscellaneous',
     icon: 'shuffle-2-outline',
     children: [

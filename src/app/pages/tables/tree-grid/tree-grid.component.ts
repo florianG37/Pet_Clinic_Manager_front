@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { AuthentificationService } from '../../../service/authentification.service';
+import { Router } from '@angular/router';
+import { OnInit } from '@angular/core';
 
 interface TreeNode<T> {
   data: T;
@@ -19,18 +22,40 @@ interface FSEntry {
   templateUrl: './tree-grid.component.html',
   styleUrls: ['./tree-grid.component.scss'],
 })
-export class TreeGridComponent {
+export class TreeGridComponent implements OnInit {
+  username = ''
+  password = ''
+  invalidLogin = false
+
   customColumn = 'name';
-  defaultColumns = [ 'size', 'kind', 'items' ];
-  allColumns = [ this.customColumn, ...this.defaultColumns ];
+  defaultColumns = ['size', 'kind', 'items'];
+  allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private router: Router, private loginservice: AuthentificationService) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
+  }
+
+  ngOnInit() {
+  }
+
+  checkLogin() {
+    (this.loginservice.authenticate(this.username, this.password).subscribe(
+      data => {
+        this.router.navigate([''])
+        this.invalidLogin = false
+      },
+      error => {
+        this.invalidLogin = true
+
+      }
+    )
+    );
+
   }
 
   updateSort(sortRequest: NbSortRequest): void {
