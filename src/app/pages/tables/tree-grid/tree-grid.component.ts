@@ -1,5 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { NbSortDirection, NbSortRequest, NbTreeGridDataSource, NbTreeGridDataSourceBuilder } from '@nebular/theme';
+import { AuthentificationService } from '../../../service/authentification.service';
+import { Router } from '@angular/router';
+import { OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { UserData } from '../../../@core/data/users';
 
 interface TreeNode<T> {
   data: T;
@@ -19,18 +25,46 @@ interface FSEntry {
   templateUrl: './tree-grid.component.html',
   styleUrls: ['./tree-grid.component.scss'],
 })
-export class TreeGridComponent {
+export class TreeGridComponent implements OnInit {
+  profileForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+  });
+  invalidLogin = false
   customColumn = 'name';
-  defaultColumns = [ 'size', 'kind', 'items' ];
-  allColumns = [ this.customColumn, ...this.defaultColumns ];
+  defaultColumns = ['size', 'kind', 'items'];
+  allColumns = [this.customColumn, ...this.defaultColumns];
 
   dataSource: NbTreeGridDataSource<FSEntry>;
 
   sortColumn: string;
   sortDirection: NbSortDirection = NbSortDirection.NONE;
 
-  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>) {
+  user: any;
+
+  constructor(private dataSourceBuilder: NbTreeGridDataSourceBuilder<FSEntry>, private router: Router, private loginservice: AuthentificationService, private userService: UserData) {
     this.dataSource = this.dataSourceBuilder.create(this.data);
+  }
+
+  ngOnInit() {
+  }
+
+  onSubmit() {
+    (this.loginservice.authenticate(this.profileForm.value.username, this.profileForm.value.password).subscribe(
+      data => {
+        this.invalidLogin = false
+        this.router.navigate(["pages"])
+      },
+      error => {
+        this.invalidLogin = true
+
+      }
+    )
+    );
+
+  }
+  destroy$(destroy$: any): import("rxjs").OperatorFunction<import("../../../@core/data/users").User[], import("../../../@core/data/users").User[]> {
+    throw new Error('Method not implemented.');
   }
 
   updateSort(sortRequest: NbSortRequest): void {

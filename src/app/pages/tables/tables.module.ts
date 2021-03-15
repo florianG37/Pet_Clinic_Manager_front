@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { NbCardModule, NbIconModule, NbInputModule, NbButtonModule, NbTreeGridModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -16,6 +18,8 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
     ThemeModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ...routedComponents,
