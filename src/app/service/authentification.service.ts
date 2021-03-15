@@ -29,6 +29,7 @@ export class AuthentificationService {
       map(
         userData => {
           sessionStorage.setItem('username', username);
+          sessionStorage.setItem('accessToken', userData["accessToken"]);
           return userData;
         }
       )
