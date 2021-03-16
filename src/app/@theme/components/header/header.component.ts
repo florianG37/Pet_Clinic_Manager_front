@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public readonly materialTheme$: Observable<boolean>;
   userPictureOnly: boolean = false;
   user: any;
+  isHidden: boolean = true;
 
   themes = [
     {
@@ -69,9 +70,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
 
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(() => this.user = { name: sessionStorage.getItem('username'), picture: 'assets/images/nick.png' });
+    if (sessionStorage.getItem('username')) {
+      this.userService.getUsers()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => this.user = { name: sessionStorage.getItem('username'), picture: 'assets/images/nick.png' });
+      this.isHidden = false
+    }
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
