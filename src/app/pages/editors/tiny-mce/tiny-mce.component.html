@@ -1,0 +1,67 @@
+<nb-card>
+    <h1>Animaux</h1>
+</nb-card>
+
+<div *ngIf="petsTable">
+    <nb-card>
+        <div id="add">
+            <button nbButton shape="round" status="success" (click)="addPet()"> + </button>
+        </div>
+
+        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+
+
+        <div id="add">
+            <button nbButton shape="round" status="success" (click)="addPet()">+ </button>
+        </div>
+    </nb-card>
+</div>
+
+<div *ngIf="addingPet">
+    <nb-card>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <h2>Ajouter</h2>
+
+            <label>Nom</label>
+            <input type="text" formControlName="name">
+
+            <label>Type</label>
+            <select formControlName="typeName">
+                <option [value]="type" *ngFor="let type of types">{{type}}</option>
+            </select>
+
+            <label>Race</label>
+            <select formControlName="breedName">
+                <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
+            </select>
+
+            <button type="submit" nbButton shape="round" status="success">Valider</button>
+            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
+        </form>
+    </nb-card>
+</div>
+
+<div *ngIf="editingPet">
+    <nb-card>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <h2>Modifier</h2>
+
+            <label>Nom</label>
+            <input type="text" formControlName="name">
+
+            <label>Type</label>
+            <select formControlName="typeName">
+                <option [value]="type" *ngFor="let type of types">{{type}}</option>
+            </select>
+
+            <label>Race</label>
+            <select formControlName="breedName">
+                <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
+            </select>
+
+            <button type="submit" nbButton shape="round" status="success">Valider</button>
+            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
+        </form>
+    </nb-card>
+</div>

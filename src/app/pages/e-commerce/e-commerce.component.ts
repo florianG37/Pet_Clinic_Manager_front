@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthentificationService } from '../../service/authentification.service';
@@ -7,7 +7,7 @@ import { AuthentificationService } from '../../service/authentification.service'
   selector: 'ngx-ecommerce',
   templateUrl: './e-commerce.component.html',
 })
-export class ECommerceComponent {
+export class ECommerceComponent implements OnInit {
   profileForm = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
@@ -15,6 +15,11 @@ export class ECommerceComponent {
   invalidLogin = false
 
   constructor(private router: Router, private loginservice: AuthentificationService) {
+  }
+
+  ngOnInit() {
+    if (sessionStorage.getItem("accessToken"))
+      history.back()
   }
 
   onSubmit() {
