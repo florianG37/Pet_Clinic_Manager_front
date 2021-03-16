@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -8,7 +9,7 @@ import { SmartTableData } from '../../../@core/data/smart-table';
   templateUrl: './smart-table.component.html',
   styleUrls: ['./smart-table.component.scss'],
 })
-export class SmartTableComponent {
+export class SmartTableComponent implements OnInit {
 
   settings = {
     actions: {
@@ -72,9 +73,13 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData) {
+  constructor(private service: SmartTableData, private router: Router) {
     const data = this.service.getData();
     this.source.load(data);
+  }
+  ngOnInit(): void {
+    if (!sessionStorage.getItem("accessToken"))
+      this.router.navigate(["pages/dashboard"])
   }
 
   onDeleteConfirm(event): void {
