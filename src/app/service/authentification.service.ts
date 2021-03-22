@@ -2,13 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-export class User {
-  constructor(
-    public status: string,
-  ) { }
-
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +18,7 @@ export class AuthentificationService {
       password: password
     });
     const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
-    return this.httpClient.post<User>('http://localhost:8080/api/auth/signin', body, { headers }).pipe(
+    return this.httpClient.post('http://localhost:8080/api/auth/signin', body, { headers }).pipe(
       map(
         userData => {
           sessionStorage.setItem('username', username);
@@ -33,7 +26,6 @@ export class AuthentificationService {
           return userData;
         }
       )
-
     );
   }
 

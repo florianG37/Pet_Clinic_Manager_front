@@ -8,7 +8,8 @@
             <button nbButton shape="round" status="success" (click)="addPet()"> + </button>
         </div>
 
-        <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+        <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="onEditConfirm($event)"
+            (deleteConfirm)="onDeleteConfirm($event)">
         </ng2-smart-table>
 
 
@@ -25,40 +26,33 @@
 
             <label>Nom</label>
             <input type="text" formControlName="name">
+            <br />
+
+            <label>Date de naissance</label>
+            <input type="text" formControlName="dateBirth">
+            <br />
+
+            <label>Genre</label>
+            <select formControlName="genderName">
+                <option [value]="gender" *ngFor="let gender of genders">{{gender}}</option>
+            </select>
+            <br />
 
             <label>Type</label>
             <select formControlName="typeName">
                 <option [value]="type" *ngFor="let type of types">{{type}}</option>
             </select>
+            <br />
 
             <label>Race</label>
             <select formControlName="breedName">
                 <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
             </select>
+            <br />
 
-            <button type="submit" nbButton shape="round" status="success">Valider</button>
-            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
-        </form>
-    </nb-card>
-</div>
-
-<div *ngIf="editingPet">
-    <nb-card>
-        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <h2>Modifier</h2>
-
-            <label>Nom</label>
-            <input type="text" formControlName="name">
-
-            <label>Type</label>
-            <select formControlName="typeName">
-                <option [value]="type" *ngFor="let type of types">{{type}}</option>
-            </select>
-
-            <label>Race</label>
-            <select formControlName="breedName">
-                <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
-            </select>
+            <label>Propriétaire</label>
+            <input type="text" formControlName="owner">
+            <br />
 
             <button type="submit" nbButton shape="round" status="success">Valider</button>
             <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>

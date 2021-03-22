@@ -2,16 +2,58 @@
     <h1>Visites</h1>
 </nb-card>
 
-<nb-card>
-    <div id="add">
-        <button nbButton shape="round" status="success"> + </button>
-    </div>
+<div *ngIf="visitsTable">
+    <nb-card>
+        <div id="add">
+            <button nbButton shape="round" status="success" (click)="addVisit()"> + </button>
+        </div>
 
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table>
+        <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="onEditConfirm($event)"
+            (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
 
 
-    <div id="add">
-        <button nbButton shape="round" status="success">+ </button>
-    </div>
-</nb-card>
+        <div id="add">
+            <button nbButton shape="round" status="success" (click)="addVisit()">+ </button>
+        </div>
+    </nb-card>
+</div>
+
+<div *ngIf="addingVisit">
+    <nb-card>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <h2>Ajouter</h2>
+
+            <label>Identifiant de l'animal</label>
+            <select formControlName="idPetName">
+                <option [value]="idPet" *ngFor="let idPet of idPets">{{idPet}}</option>
+            </select>
+            <br />
+
+            <label>Poids de l'animal</label>
+            <input type="number" formControlName="petWeight">
+            <br />
+
+            <label>Identifiant du vétérinaire</label>
+            <select formControlName="idVetName">
+                <option [value]="idVet" *ngFor="let idVet of idVets">{{idVet}}</option>
+            </select>
+            <br />
+
+            <label>Description</label>
+            <input type="text" formControlName="description">
+            <br />
+
+            <label>Date d'entrée</label>
+            <input type="text" formControlName="dateEntry">
+            <br />
+
+            <label>Date de sortie</label>
+            <input type="text" formControlName="dateLeaving">
+            <br />
+
+            <button type="submit" nbButton shape="round" status="success">Valider</button>
+            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
+        </form>
+    </nb-card>
+</div>
