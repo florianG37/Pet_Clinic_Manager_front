@@ -4,7 +4,6 @@ import { AuthentificationService } from '../../../service/authentification.servi
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
 import { UserData } from '../../../@core/data/users';
 
 interface TreeNode<T> {

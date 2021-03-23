@@ -95,7 +95,8 @@ export class SmartTableComponent implements OnInit {
           idPet: visits["visits"][visit].idPet.id,
           name: visits["visits"][visit].idPet.name,
           idVet: visits["visits"][visit].idVet.id,
-          lastName: visits["visits"][visit].idVet.name
+          firstName: visits["visits"][visit].idVet.firstname,
+          lastName: visits["visits"][visit].idVet.lastname
         })
       }
       this.source.load(data);
@@ -152,16 +153,20 @@ export class SmartTableComponent implements OnInit {
 
   onEditConfirm(event): void {
     const body = JSON.stringify({
-      breed: event.newData.breed,
-      datebirth: event.newData.dateBirth,
-      gender: event.newData.gender,
-      name: event.newData.name,
-      owner: event.newData.owner,
-      type: event.newData.type
+      dateEntry: event.newData.dateEntry,
+      dateLeaving: event.newData.dateLeaving,
+      description: event.newData.description,
+      petWeight: event.newData.petWeight,
+      pet: {
+        id: event.newData.idPet
+      },
+      vet: {
+        id: event.newData.idVet
+      }
     });
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8', Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') })
-    this.http.put('http://localhost:8080/api/pet' + '/' + event.data.id, body, { headers }).subscribe()
+    this.http.put('http://localhost:8080/api/visit' + '/' + event.data.id, body, { headers }).subscribe()
 
     event.confirm.resolve();
   }
@@ -191,11 +196,11 @@ export class SmartTableComponent implements OnInit {
       dateLeaving: this.dateLeaving,
       description: this.description,
       petWeight: this.petWeight,
-      idVet: {
-        id: this.idVetName
-      },
-      idPet: {
+      pet: {
         id: this.idPetName
+      },
+      vet: {
+        id: this.idVetName
       }
     });
 

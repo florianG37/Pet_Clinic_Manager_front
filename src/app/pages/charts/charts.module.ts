@@ -56,8 +56,8 @@ const components = [
     NgxEchartsModule,
     NgxChartsModule,
     ChartModule,
-    NbCardModule,
+    NbCardModule
   ],
-  declarations: [...routedComponents, ...components],
+  declarations: [...routedComponents, ...components]
 })
-export class ChartsModule {}
+export class ChartsModule { }

@@ -161,32 +161,19 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Charts',
+    title: 'Statistiques',
     icon: 'pie-chart-outline',
-    children: [
-      {
-        title: 'Echarts',
-        link: '/pages/charts/echarts',
-      },
-      {
-        title: 'Charts.js',
-        link: '/pages/charts/chartjs',
-      },
-      {
-        title: 'D3',
-        link: '/pages/charts/d3',
-      },
-    ],
-  },
-  {
-    title: 'Animaux',
-    icon: 'text-outline',
-    link: '/pages/editors/tinymce'
+    link: '/pages/charts/d3'
   },
   {
     title: 'Visites',
     icon: 'grid-outline',
     link: '/pages/tables/smart-table'
+  },
+  {
+    title: 'Animaux',
+    icon: 'text-outline',
+    link: '/pages/editors/tinymce'
   },
   {
     title: 'Miscellaneous',

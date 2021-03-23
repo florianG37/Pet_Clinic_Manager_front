@@ -1,17 +1,29 @@
 <div class="container">
-  <form [formGroup]="profileForm">
+  <nb-card>
+    <h1>Connexion</h1>
+  </nb-card>
 
-    <label>
-      User Name:
-      <input type="text" formControlName="username">
-    </label>
+  <nb-card>
+    <form [formGroup]="profileForm">
 
-    <label>
-      Password:
-      <input type="password" formControlName="password">
-    </label>
+      <br />
+      <label>
+        Identifiant<br />
+        <input type="text" formControlName="username">
+      </label>
+      <br />
 
-    <button type="submit" (click)="onSubmit()" [disabled]="!profileForm.valid" nbButton shape="round"
-      status="success">Login</button>
-  </form>
+      <br />
+      <label>
+        Mot de passe<br />
+        <input type="password" formControlName="password">
+      </label>
+      <br />
+
+      <br />
+      <button type="submit" (click)="onSubmit()" [disabled]="!profileForm.valid" nbButton shape="round"
+        status="success">Se connecter</button>
+      <br /><br />
+    </form>
+  </nb-card>
 </div>

@@ -22,40 +22,40 @@
 <div *ngIf="addingPet">
     <nb-card>
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <h2>Ajouter</h2>
+            <h2>Ajouter</h2><br />
 
-            <label>Nom</label>
+            <label>Nom</label><br />
             <input type="text" formControlName="name">
-            <br />
+            <br /><br />
 
-            <label>Date de naissance</label>
-            <input type="text" formControlName="dateBirth">
-            <br />
+            <label>Date de naissance</label><br />
+            <input type="date" formControlName="dateBirth">
+            <br /><br />
 
-            <label>Genre</label>
+            <label>Genre</label><br />
             <select formControlName="genderName">
                 <option [value]="gender" *ngFor="let gender of genders">{{gender}}</option>
             </select>
-            <br />
+            <br /><br />
 
-            <label>Type</label>
+            <label>Type</label><br />
             <select formControlName="typeName">
                 <option [value]="type" *ngFor="let type of types">{{type}}</option>
             </select>
-            <br />
+            <br /><br />
 
-            <label>Race</label>
+            <label>Race</label><br />
             <select formControlName="breedName">
                 <option [value]="breed" *ngFor="let breed of breeds">{{breed}}</option>
             </select>
-            <br />
+            <br /><br />
 
-            <label>Propriétaire</label>
+            <label>Propriétaire</label><br />
             <input type="text" formControlName="owner">
-            <br />
+            <br /><br /><br />
 
             <button type="submit" nbButton shape="round" status="success">Valider</button>
-            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
+            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button><br />
         </form>
     </nb-card>
 </div>

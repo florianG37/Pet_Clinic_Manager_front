@@ -1,6 +1,12 @@
-@import '../../../@theme/styles/themes';
+@import "../../../@theme/styles/themes";
 
 @include nb-install-component() {
+  nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+  h1 {
+    text-align: center;
+  }
   ngx-d3-bar,
   ngx-d3-pie,
   ngx-d3-advanced-pie,

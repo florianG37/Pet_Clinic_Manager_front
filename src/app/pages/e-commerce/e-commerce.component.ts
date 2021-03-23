@@ -6,6 +6,7 @@ import { AuthentificationService } from '../../service/authentification.service'
 @Component({
   selector: 'ngx-ecommerce',
   templateUrl: './e-commerce.component.html',
+  styleUrls: ['./e-commerce.component.scss']
 })
 export class ECommerceComponent implements OnInit {
   profileForm = new FormGroup({
@@ -28,7 +29,7 @@ export class ECommerceComponent implements OnInit {
         this.invalidLogin = false
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(["pages/tables/smart-table"])
+        this.router.navigate(["pages/charts/d3"])
       },
       error => {
         this.invalidLogin = true

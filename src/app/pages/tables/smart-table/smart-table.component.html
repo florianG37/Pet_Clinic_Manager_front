@@ -22,38 +22,38 @@
 <div *ngIf="addingVisit">
     <nb-card>
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <h2>Ajouter</h2>
+            <h2>Ajouter</h2><br />
 
-            <label>Identifiant de l'animal</label>
+            <label>Identifiant de l'animal</label><br />
             <select formControlName="idPetName">
                 <option [value]="idPet" *ngFor="let idPet of idPets">{{idPet}}</option>
             </select>
-            <br />
+            <br /><br />
 
-            <label>Poids de l'animal</label>
+            <label>Poids de l'animal</label><br />
             <input type="number" formControlName="petWeight">
-            <br />
+            <br /><br />
 
-            <label>Identifiant du vétérinaire</label>
+            <label>Identifiant du vétérinaire</label><br />
             <select formControlName="idVetName">
                 <option [value]="idVet" *ngFor="let idVet of idVets">{{idVet}}</option>
             </select>
-            <br />
+            <br /><br />
 
-            <label>Description</label>
+            <label>Description</label><br />
             <input type="text" formControlName="description">
-            <br />
+            <br /><br />
 
-            <label>Date d'entrée</label>
-            <input type="text" formControlName="dateEntry">
-            <br />
+            <label>Date d'entrée</label><br />
+            <input type="date" formControlName="dateEntry">
+            <br /><br />
 
-            <label>Date de sortie</label>
-            <input type="text" formControlName="dateLeaving">
-            <br />
+            <label>Date de sortie</label><br />
+            <input type="date" formControlName="dateLeaving">
+            <br /><br /><br />
 
             <button type="submit" nbButton shape="round" status="success">Valider</button>
-            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button>
+            <button (click)="cancel($event)" nbButton shape="round" status="danger">Annuler</button><br /><br />
         </form>
     </nb-card>
 </div>
