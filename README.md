@@ -1,6 +1,6 @@
 # Application Web de Gestion des Animaux d'une Clinique Vétérinaire
 
-## Projet Libre S10
+## Projet Libre S10 - Partie Front-end
 
 <em>Auteurs : Dylan MOTARD & Florian GIGOT </em>
 
@@ -13,6 +13,10 @@ npm start
 ```
 * Accéder à l'URL depuis http://localhost:4200/pages
 * Se connecter avec l'identifiant "Admin" et le mot de passe "password"
+
+## Partie Back-end
+
+Dépôt : https://github.com/florianG37/Pet_Clinic_Manager_back
 
 ## Technologies
 
