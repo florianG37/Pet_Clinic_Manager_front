@@ -188,28 +188,32 @@ export class SmartTableComponent implements OnInit {
   }
 
   onSubmit() {
-    this.visitsTable = true
-    this.addingVisit = false
+    if (this.idPetName && this.idVetName) {
+      this.visitsTable = true
+      this.addingVisit = false
 
-    const body = JSON.stringify({
-      dateEntry: this.dateEntry,
-      dateLeaving: this.dateLeaving,
-      description: this.description,
-      petWeight: this.petWeight,
-      pet: {
-        id: this.idPetName
-      },
-      vet: {
-        id: this.idVetName
-      }
-    });
+      const body = JSON.stringify({
+        dateEntry: this.dateEntry,
+        dateLeaving: this.dateLeaving,
+        description: this.description,
+        petWeight: this.petWeight,
+        pet: {
+          id: this.idPetName
+        },
+        vet: {
+          id: this.idVetName
+        }
+      });
 
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8', Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') })
-    this.http.post('http://localhost:8080/api/visit', body, { headers }).subscribe()
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8', Authorization: 'Bearer ' + sessionStorage.getItem('accessToken') })
+      this.http.post('http://localhost:8080/api/visit', body, { headers }).subscribe()
 
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(["pages/tables/smart-table"])
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(["pages/tables/smart-table"])
+    }
+    else
+      alert("Veuillez renseigner les identifiants")
   }
 
   cancel(event) {

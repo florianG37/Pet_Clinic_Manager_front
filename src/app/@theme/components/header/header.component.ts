@@ -96,6 +96,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.currentTheme = themeName;
         this.rippleService.toggle(themeName?.startsWith('material'));
       });
+
+    this.menuService.onItemClick()
+      .subscribe((event) => {
+        if (event.item.title == "Se déconnecter") {
+          sessionStorage.clear()
+
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(["pages/dashboard"])
+        }
+      });
   }
 
   ngOnDestroy() {

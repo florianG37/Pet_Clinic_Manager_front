@@ -33,7 +33,7 @@ export class ECommerceComponent implements OnInit {
       },
       error => {
         this.invalidLogin = true
-
+        alert("Échec de l'authentification")
       }
     )
     );
