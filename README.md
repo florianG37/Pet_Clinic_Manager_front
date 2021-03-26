@@ -8,6 +8,9 @@
 
 * Installer Node.js 10
 ```shell
+git clone https://github.com/florianG37/Pet_Clinic_Manager_front.git
+cd Pet_Clinic_Manager_front
+
 npm install
 npm start
 ```
