@@ -4,6 +4,16 @@
 
 <em>Auteurs : Dylan MOTARD & Florian GIGOT </em>
 
+## Installation
+
+* Installer Node.js 10
+```shell
+npm install
+npm start
+```
+* Accéder à l'URL depuis http://localhost:4200/pages
+* Se connecter avec l'identifiant "Admin" et le mot de passe "password"
+
 ## Technologies
 
 Pour ce projet, nous allons utiliser les technologies suivantes :
@@ -20,19 +30,8 @@ Cette application se base sur 2 grands axes :
 
 Gestion des flux :
 * Gestion des fiches d’animaux (identifiant, nom, date de naissance, propriétaire, type, race)
-* Gestion des fiches de propriétaires d’animaux (identifiant, prénom, nom, adresse, ville, téléphone, courriel)
-* Gestion des fiches de vétérinaires (identifiant, prénom, nom, adresse, ville, téléphone, courriel, salaire, temps de travail, type de contrat)
-* Gestion des types d’animaux (identifiant, nom, races)
-* Gestion des races d’animaux (identifiant, nom)
 * Gestion des visites (identifiant, date d’entrée, date de sortie, animal, vétérinaire)
 
 Visualisation des statistiques :
-* Nombre de visites en fonction du temps (Courbe)
+* Nombre d’animaux en fonction du type d’animal (Diagramme circulaire)
 * Nombre d’animaux en fonction du type d’animal (Histogramme)
-* Temps moyen par visite (Nombre)
-* Nombre moyen d’animaux par propriétaire (Nombre)
-* Age moyen des animaux (Nombre)
-* Heures supplémentaires des vétérinaires (Pourcentage)
-
-Gestion des utilisateurs :
-* Gestion des utilisateurs par l’administrateur
